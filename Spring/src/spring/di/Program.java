@@ -1,16 +1,10 @@
 package spring.di;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import spring.di.entity.Exam;
-import spring.di.entity.NewlecExam;
 import spring.di.ui.ExamConsole;
-import spring.di.ui.GridExamConsole;
-import spring.di.ui.InlineExamConsole;
 
 public class Program {
 
@@ -22,14 +16,15 @@ public class Program {
 //		ExamConsole console = new GridExamConsole();
 //		console.setExam(exam);
 		
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring/di/setting.xml");
+//		ApplicationContext context = new ClassPathXmlApplicationContext("spring/di/setting.xml");
+		ApplicationContext context = new AnnotationConfigApplicationContext(DIConfig.class);
 		
 //		Exam exam = context.getBean(Exam.class);
 //		System.out.println(exam.toString());
 		
 		//둘다 가능 하지만 아래방법을 좀더 선호함.
-		//ExamConsole console = (ExamConsole) context.getBean("console");
-		ExamConsole console = context.getBean(ExamConsole.class);
+		ExamConsole console = (ExamConsole) context.getBean("console");
+		//ExamConsole console = context.getBean(ExamConsole.class);
 		console.print();
 		
 		//java에서 ArrayList를 사용하는 방법을 바꿈.
