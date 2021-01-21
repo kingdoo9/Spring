@@ -16,6 +16,7 @@ public class Program {
 //		ExamConsole console = new GridExamConsole();
 //		console.setExam(exam);
 		
+		
 //		ApplicationContext context = new ClassPathXmlApplicationContext("spring/di/setting.xml");
 		ApplicationContext context = new AnnotationConfigApplicationContext(DIConfig.class);
 		
